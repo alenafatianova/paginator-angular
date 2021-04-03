@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Directive, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core'
 
 @Directive({
   selector: '[appPaginator]',
@@ -7,24 +7,31 @@ import { Directive, EventEmitter, Input, OnInit, Output } from '@angular/core'
 export class PaginatorDirective implements OnInit {
 
   @Input() totalCount!: number;
-  @Input() currentPage: number = 1
+  currentPage: number = 1
   @Output() onPageChange = new EventEmitter<number>()
-  constructor() {}
+
+  constructor(private render: Renderer2, private el: ElementRef) {}
 
   ngOnInit(): void {}
 
   private setPage(pageNumber: number) {
     this.currentPage = pageNumber;
-
+    this.setValue(this.currentPage)
   }
+  private setValue(value: string | number) {
+    this.render.setProperty(this.el.nativeElement, "value", String(value))
+  }
+
   previousPage() {
     this.setPage(Math.max(1, this.currentPage - 1));
     console.log(this.currentPage)
   }
+
   nextPage() {
     this.setPage(Math.min(this.totalCount, this.currentPage + 1));
     console.log(this.currentPage)
   }
+
   get isPageFirst(): boolean {
     return this.currentPage === 1
   }

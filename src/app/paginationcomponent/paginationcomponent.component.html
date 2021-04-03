@@ -10,19 +10,20 @@
 
     <div class="paginatorButtons">
 
-      <button (click) = 'pagination.previousPage()' [disabled] = 'pagination.isPageFirst'> Prev </button>
+      <button (click) = 'pagination.previousPage()' [disabled] = 'pagination.isPageLast' class="prevButtonStye"> Prev </button>
 
       <span
         #pagination = 'paginator'
         appPaginator
         max='20'
-        main='1'
+        min='1'
+        value='1'
         [totalCount] = '20'
         >
        {{pagination.totalCount}}
       </span>
 
-      <button (click) = 'pagination.nextPage()' [disabled] = 'pagination.isPageLast'>Next</button>
+      <button (click) = 'pagination.nextPage()' [disabled] = 'pagination.isPageFirst'  class="nextButtonStye">Next</button>
 
     </div>
   </div>
