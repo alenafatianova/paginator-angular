@@ -1,0 +1,29 @@
+.paginator-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  .paginatorButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      width: 70px;
+      height: 30px;
+      border: none;
+      margin: 30px;
+    }
+  }
+}
+
+  .imagesFromServer {
+    width: 200px;
+    height: 100px;
+  }
+
+
+.currentPage :active {
+  border: 1px solid red;
+}
+
