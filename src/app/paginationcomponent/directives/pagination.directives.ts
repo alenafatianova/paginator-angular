@@ -7,7 +7,8 @@ import { Directive, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 }
 export class PaginatorDirective implements OnInit {
 
   @Input() totalCount!: number;
-  currentPage: number = 1
+  @Input() currentPage: number = 1
+
   @Output() onPageChange = new EventEmitter<number>()
 
   constructor(private render: Renderer2, private el: ElementRef) {}
@@ -16,20 +17,18 @@ export class PaginatorDirective implements OnInit {
 
   private setPage(pageNumber: number) {
     this.currentPage = pageNumber;
-    this.setValue(this.currentPage)
-  }
-  private setValue(value: string | number) {
-    this.render.setProperty(this.el.nativeElement, "value", String(value))
+    this.render.setProperty(this.el.nativeElement, 'value', pageNumber)
+    console.log(this.currentPage)
   }
 
   previousPage() {
     this.setPage(Math.max(1, this.currentPage - 1));
-    console.log(this.currentPage)
+
   }
 
   nextPage() {
     this.setPage(Math.min(this.totalCount, this.currentPage + 1));
-    console.log(this.currentPage)
+    
   }
 
   get isPageFirst(): boolean {
