@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-export interface PostsType  {
+export interface ItemsType  {
   id: string
   author: string
   width: number
@@ -18,6 +18,6 @@ export interface PostsType  {
 
 
 export class AppComponent {
-  posts: PostsType[] = []
+  items: ItemsType[] = []
 
 }
