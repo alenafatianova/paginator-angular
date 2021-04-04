@@ -14,7 +14,7 @@ import { PostsService } from '../pagination/service/posts.service';
 export class PaginationComponent implements OnInit {
 
   @Input() items: ItemsType[] = []
-
+  @Input() pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   constructor(private http: HttpClient, private postsService: PostsService) { }
 
   componTitle='Paginator'
@@ -28,6 +28,7 @@ export class PaginationComponent implements OnInit {
   }
   pageChangeHandler(pageNumber: number) {
    this.getItems(pageNumber)
+
   }
 
 }

@@ -8,16 +8,14 @@ export class PaginatorDirective implements OnInit {
 
   @Input() totalCount!: number;
   @Input() currentPage: number = 1;
-  @Input() pages: Array<number> = []
-  activePage!: number;
-
+  
   @Output() onPageChange = new EventEmitter();
 
   constructor(private render: Renderer2, private element: ElementRef) {};
 
   ngOnInit(): void {};
 
-  private setPage(pageNumber: number) {
+  public setPage(pageNumber: number) {
     this.currentPage = pageNumber;
     this.render.setProperty(this.element.nativeElement, 'value', this.currentPage)
     this.onPageChange.emit(this.currentPage)

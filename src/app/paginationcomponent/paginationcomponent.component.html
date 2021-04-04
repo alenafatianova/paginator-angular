@@ -15,13 +15,14 @@
 <div class="paginatorButtons">
   <button (click) = 'pagination.previousPage()' [disabled] = 'pagination.isPageFirst'   class="prevButtonStye"> Prev </button>
 
-  <span #pagination='paginator'
-      appPaginator
+  <div  #pagination='paginator'
+    appPaginator
     type="number"
-    [totalCount]='20'
-    (onPageChange) = 'pageChangeHandler($event)'
-    value='1'>{{pagination.currentPage}} </span>
+    [totalCount]='10'
+    (onPageChange) = 'pageChangeHandler($event)'>
+    <span *ngFor='let page of pages'> {{page}} </span>
+  </div>
 
   <button (click) = 'pagination.nextPage()' [disabled] = 'pagination.isPageLast'  class="nextButtonStye">Next</button>
-
 </div>
+
