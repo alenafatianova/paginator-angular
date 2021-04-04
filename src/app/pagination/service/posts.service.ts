@@ -15,6 +15,6 @@ export class PostsService {
   constructor(private http: HttpClient) { }
 
   getItems(pageNumber: number): Observable<Array<ItemsType>> {
-    return this.http.get<ItemsType[]>(`https://picsum.photos/v2/list?page=${pageNumber}&limit=6`)
+    return this.http.get<ItemsType[]>(`https://picsum.photos/v2/list?page=${pageNumber}&limit=8`)
   }
 }

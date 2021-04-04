@@ -1,7 +1,7 @@
-
+<div class='componentContainer'>
+  <h2>{{componTitle}}</h2>
   <div class='paginator-container'>
-    <h2>{{componTitle}}</h2>
-    <div class='paginator-component'>
+
     <div class='items' *ngFor='let item of items'>
        {{item.author}}
        <div class='imagesContainer'>
@@ -9,25 +9,19 @@
        </div>
     </div>
 
-      <div class="paginatorButtons">
 
-        <button (click) = 'pagination.previousPage()' [disabled] = 'pagination.isPageFirst'   class="prevButtonStye"> Prev </button>
-        <input
-          #pagination='paginator'
-          appPaginator
-          type="number"
-          [totalCount]='20'
-          (onPageChange) = 'pageChangeHandler($event)'
-          value='1'
-          >
-        <!-- <span
-          #pagination='paginator'
-          appPaginator
-
-          > {{pagination.totalCount}} </span> -->
-        <button (click) = 'pagination.nextPage()' [disabled] = 'pagination.isPageLast'  class="nextButtonStye">Next</button>
-
-      </div>
-    </div>
   </div>
+</div>
+<div class="paginatorButtons">
+  <button (click) = 'pagination.previousPage()' [disabled] = 'pagination.isPageFirst'   class="prevButtonStye"> Prev </button>
 
+  <span #pagination='paginator'
+      appPaginator
+    type="number"
+    [totalCount]='20'
+    (onPageChange) = 'pageChangeHandler($event)'
+    value='1'>{{pagination.currentPage}} </span>
+
+  <button (click) = 'pagination.nextPage()' [disabled] = 'pagination.isPageLast'  class="nextButtonStye">Next</button>
+
+</div>
